@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>下川部獅子組について | 下川部獅子組</title>
+  <link rel="icon" type="image/png" href="images/kamon.png">
+  <link rel="apple-touch-icon" href="images/kamon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* ===== ページヒーロー ===== */
+    .page-hero {
+      background-color: var(--red);
+      background-image: url('images/gallery6.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      position: relative;
+      padding: 120px 24px 64px;
+      text-align: center;
+      color: var(--white);
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+    }
+    .page-hero-inner { position: relative; z-index: 1; }
+    .page-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .page-hero p {
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+
+    /* ===== ページ本文 ===== */
+    .about-body {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 72px 24px 96px;
+    }
+
+    /* セクション見出し */
+    .about-section { margin-bottom: 80px; }
+    .about-section-title {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--red);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .about-section-title::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 1.5em;
+      background: var(--red);
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    /* 概要 */
+    .about-summary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .about-summary-text p {
+      font-size: 0.95rem;
+      line-height: 2;
+      color: var(--text-light);
+      margin-bottom: 16px;
+    }
+    .about-summary-img {
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 4px 4px 20px rgba(0,0,0,0.12);
+      aspect-ratio: 4/3;
+    }
+    .about-summary-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* 基本情報テーブル */
+    .info-table { width: 100%; border-collapse: collapse; }
+    .info-table th,
+    .info-table td {
+      padding: 14px 16px;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--cream-dark);
+      text-align: left;
+      vertical-align: top;
+      line-height: 1.7;
+    }
+    .info-table th {
+      width: 160px;
+      font-weight: 700;
+      color: var(--red);
+      background: rgba(192,57,43,0.04);
+      white-space: nowrap;
+    }
+    .info-table tr:first-child th,
+    .info-table tr:first-child td { border-top: 1px solid var(--cream-dark); }
+
+    /* 歴史タイムライン */
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 6px;
+      bottom: 0;
+      width: 2px;
+      background: var(--cream-dark);
+    }
+    .timeline-item { position: relative; margin-bottom: 32px; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -29px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--red);
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 2px var(--red);
+    }
+    .timeline-year {
+      font-family: var(--serif);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--red);
+      margin-bottom: 4px;
+      letter-spacing: 0.05em;
+    }
+    .timeline-text {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: var(--text-light);
+    }
+
+    /* メンバー紹介 */
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 24px;
+    }
+    .member-card {
+      text-align: center;
+    }
+    .member-photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 12px;
+      display: block;
+      background: var(--cream-dark);
+      border: 3px solid var(--white);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+    }
+    .member-photo-placeholder {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--cream-dark);
+      border: 3px solid var(--white);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+      color: var(--text-light);
+      font-size: 2.5rem;
+    }
+    .member-name {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .member-role {
+      font-size: 0.78rem;
+      color: var(--red);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .member-note {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    /* 奉納神社 */
+    .shrine-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .shrine-card {
+      border: 1.5px solid var(--cream-dark);
+      border-radius: 6px;
+      padding: 28px 24px;
+      background: var(--white);
+    }
+    .shrine-card-name {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .shrine-card-name::before {
+      content: '⛩';
+      font-size: 1.2rem;
+    }
+    .shrine-card p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 640px) {
+      .about-summary { grid-template-columns: 1fr; }
+      .about-summary-img { order: -1; }
+      .shrine-cards { grid-template-columns: 1fr; }
+      .info-table th { width: 100px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header scrolled">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">
+        <img src="images/kamon.png" alt="下川部獅子組 家紋" class="kamon">
+        <span class="site-name">下川部獅子組</span>
+      </a>
+      <nav class="global-nav">
+        <ul>
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="about.html" class="active">下川部獅子組について</a></li>
+          <li><a href="index.html#activities">活動・奉納</a></li>
+          <li><a href="index.html#video">動画</a></li>
+          <li><a href="index.html#news">お知らせ</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ページヒーロー -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <h1>下川部獅子組について</h1>
+      <p>香川県高松市川部町の伝統獅子舞団体</p>
+    </div>
+  </div>
+
+  <div class="about-body">
+
+    <!-- 概要 -->
+    <section class="about-section">
+      <h2 class="about-section-title">私たちについて</h2>
+      <div class="about-summary">
+        <div class="about-summary-text">
+          <p>下川部獅子組は、香川県高松市川部町に伝わる獅子舞を継承する団体です。</p>
+          <p>毎年秋に下川部天満神社・川部八幡神社での奉納を行い、地域の五穀豊穣・無病息災を祈願しています。</p>
+          <p><!-- 設立の経緯や活動への思いなどを追記してください --></p>
+        </div>
+        <div class="about-summary-img">
+          <img src="images/gallery4.jpg" alt="下川部獅子組">
+        </div>
+      </div>
+    </section>
+
+    <!-- 基本情報 -->
+    <section class="about-section">
+      <h2 class="about-section-title">基本情報</h2>
+      <table class="info-table">
+        <tr>
+          <th>団体名</th>
+          <td>下川部獅子組</td>
+        </tr>
+        <tr>
+          <th>所在地</th>
+          <td>香川県高松市川部町</td>
+        </tr>
+        <tr>
+          <th>奉納神社</th>
+          <td>下川部天満神社・川部八幡神社</td>
+        </tr>
+        <tr>
+          <th>奉納時期</th>
+          <td>毎年秋（10月頃）</td>
+        </tr>
+        <tr>
+          <th>代表</th>
+          <td>佐藤宗正</td>
+        </tr>
+        <tr>
+          <th>設立</th>
+          <td><!-- 設立年を記入 --></td>
+        </tr>
+        <tr>
+          <th>団員数</th>
+          <td><!-- 団員数を記入 -->名</td>
+        </tr>
+        <tr>
+          <th>お問い合わせ</th>
+          <td>
+            <a href="contact.html" style="color:var(--red);">お問い合わせフォーム</a> または
+            <a href="https://www.instagram.com/shimokawanabe/" target="_blank" rel="noopener" style="color:var(--red);">Instagram</a>
+          </td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- 歴史 -->
+    <section class="about-section">
+      <h2 class="about-section-title">歴史</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <p class="timeline-year"><!-- 年 --></p>
+          <p class="timeline-text"><!-- 創設・起源などを記入 --></p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-year"><!-- 年 --></p>
+          <p class="timeline-text"><!-- 主な出来事を記入 --></p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-year"><!-- 年 --></p>
+          <p class="timeline-text"><!-- 主な出来事を記入 --></p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-year">2023年</p>
+          <p class="timeline-text">獅子舞王国さぬき2023〈普及版〉に出演。</p>
+        </div>
+        <div class="timeline-item">
+          <p class="timeline-year">2025年</p>
+          <p class="timeline-text">公式ウェブサイトを開設。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 奉納神社 -->
+    <section class="about-section">
+      <h2 class="about-section-title">奉納神社</h2>
+      <div class="shrine-cards">
+        <div class="shrine-card">
+          <p class="shrine-card-name">下川部天満神社</p>
+          <p>香川県高松市川部町に鎮座する神社です。毎年秋の例大祭にて獅子舞を奉納しています。</p>
+        </div>
+        <div class="shrine-card">
+          <p class="shrine-card-name">川部八幡神社</p>
+          <p>香川県高松市川部町に鎮座する神社です。毎年秋の例大祭にて獅子舞を奉納しています。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- メンバー紹介 -->
+    <section class="about-section">
+      <h2 class="about-section-title">メンバー紹介</h2>
+      <p style="font-size:0.92rem;color:var(--text-light);line-height:1.9;padding:24px;background:rgba(192,57,43,0.04);border-left:3px solid var(--red);border-radius:0 4px 4px 0;">
+        メンバー紹介は今後更新予定です。
+      </p>
+    </section>
+
+  </div>
+
+  <footer class="site-footer" id="contact">
+    <div class="footer-top">
+      <p class="footer-lead">お問い合わせ</p>
+      <p class="footer-sub">取材・出演依頼・見学など、お気軽にご連絡ください。<br>フォームまたはInstagramよりご連絡ください。</p>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <div class="footer-col-icon">
+            <svg viewBox="0 0 40 40"><circle cx="20" cy="14" r="6" fill="none" stroke="white" stroke-width="2"/><path d="M8 36 Q8 26 20 26 Q32 26 32 36" fill="none" stroke="white" stroke-width="2"/><line x1="26" y1="8" x2="34" y2="8" stroke="white" stroke-width="2"/></svg>
+          </div>
+          <p class="footer-col-title">取材依頼</p>
+          <p class="footer-col-text">取材・メディア掲載の<br>ご相談はこちらから</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-icon">
+            <svg viewBox="0 0 40 40"><rect x="8" y="10" width="24" height="20" rx="2" fill="none" stroke="white" stroke-width="2"/><line x1="14" y1="20" x2="26" y2="20" stroke="white" stroke-width="2"/><line x1="20" y1="14" x2="20" y2="26" stroke="white" stroke-width="2"/></svg>
+          </div>
+          <p class="footer-col-title">出演依頼</p>
+          <p class="footer-col-text">イベント・祭礼などの<br>出演依頼はこちらから</p>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-icon">
+            <svg viewBox="0 0 40 40"><path d="M20 8 L26 14 L34 14 L34 32 L6 32 L6 14 L14 14 Z" fill="none" stroke="white" stroke-width="2"/><line x1="14" y1="22" x2="26" y2="22" stroke="white" stroke-width="2"/><line x1="14" y1="27" x2="22" y2="27" stroke="white" stroke-width="2"/></svg>
+          </div>
+          <p class="footer-col-title">見学案内</p>
+          <p class="footer-col-text">練習見学や体験希望の<br>方はこちらから</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <a href="contact.html" class="footer-btn">
+        <svg viewBox="0 0 24 24" class="footer-btn-icon"><rect x="2" y="4" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2 6 L12 14 L22 6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        お問い合わせフォームへ
+      </a>
+      <a href="https://www.instagram.com/shimokawanabe/" target="_blank" rel="noopener" class="footer-btn">
+        <svg viewBox="0 0 24 24" class="footer-btn-icon"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+        InstagramのDMで連絡
+      </a>
+    </div>
+    <p class="footer-copy">© 下川部獅子組</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
