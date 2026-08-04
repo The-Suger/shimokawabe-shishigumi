@@ -812,3 +812,137 @@ ul { list-style: none; }
 
   .video-section::before { display: none; }
 }
+/* ============================================
+   追加CSS — css/style.css の【末尾】に貼り付けてください
+   （既存のスタイルは変更しません。追記のみ）
+   2026-08-04 追加：活動・奉納セクション／奉納日の曜日表記
+   ============================================ */
+
+/* 奉納日ボックス内の曜日 */
+.date-week {
+  font-size: 0.78em;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+/* ===== 活動・奉納セクション ===== */
+.activities-section {
+  padding: 72px 24px;
+  background: var(--cream);
+  position: relative;
+}
+
+.activities-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.activities-lead {
+  font-size: 0.92rem;
+  color: var(--text-light);
+  line-height: 2;
+  margin-bottom: 40px;
+}
+
+/* 奉納日カード */
+.honou-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.honou-card {
+  background: var(--white);
+  border: 1px solid var(--cream-dark);
+  border-top: 4px solid var(--red);
+  border-radius: 4px;
+  padding: 28px 24px;
+  box-shadow: 2px 2px 12px rgba(0,0,0,0.05);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.honou-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 4px 6px 18px rgba(0,0,0,0.1);
+}
+
+.honou-card-label {
+  font-size: 0.72rem;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.honou-card-shrine {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.honou-card-date {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--red);
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--cream-dark);
+}
+
+.honou-card-note {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  line-height: 1.8;
+}
+
+/* 年間の流れ */
+.activities-flow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.flow-item {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.flow-mark {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--red);
+  opacity: 0.35;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.flow-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.flow-text {
+  font-size: 0.84rem;
+  color: var(--text-light);
+  line-height: 1.9;
+}
+
+/* レスポンシブ */
+@media (max-width: 900px) {
+  .honou-cards { grid-template-columns: 1fr; gap: 16px; }
+  .activities-flow { grid-template-columns: 1fr; gap: 20px; }
+}
+
+@media (max-width: 640px) {
+  .activities-section { padding: 56px 20px; }
+  .honou-card-date { font-size: 1.3rem; }
+}
