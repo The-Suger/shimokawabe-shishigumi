@@ -1,271 +1,303 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>お問い合わせ | 下川部獅子組</title>
-  <link rel="icon" type="image/png" href="images/kamon.png">
-  <link rel="apple-touch-icon" href="images/kamon.png">
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    .contact-hero {
-      background: var(--red);
-      padding: 48px 24px;
-      text-align: center;
-      color: var(--white);
-    }
-    .contact-hero h1 {
-      font-family: var(--serif);
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .contact-hero p {
-      font-size: 0.9rem;
-      opacity: 0.9;
-      line-height: 1.8;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お問い合わせ | 下川部獅子組</title>
+<meta name="description" content="下川部獅子組へのお問い合わせフォーム。取材依頼・イベント出演依頼・練習見学のご相談を受け付けています。InstagramのDMからもご連絡いただけます。">
+<link rel="canonical" href="https://shimokawanabe-shishigumi.vercel.app/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="下川部獅子組">
+<meta property="og:title" content="お問い合わせ | 下川部獅子組">
+<meta property="og:description" content="取材依頼・イベント出演依頼・練習見学のご相談を受け付けています。">
+<meta property="og:url" content="https://shimokawanabe-shishigumi.vercel.app/contact.html">
+<meta property="og:image" content="https://shimokawanabe-shishigumi.vercel.app/images/hero.jpg">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/add-2026-08.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+.contact-hero {
+background: var(--red);
+padding: 48px 24px;
+text-align: center;
+color: var(--white);
+}
+.contact-hero h1 {
+font-family: var(--serif);
+font-size: 2rem;
+font-weight: 700;
+margin-bottom: 8px;
+}
+.contact-hero p {
+font-size: 0.9rem;
+opacity: 0.9;
+line-height: 1.8;
+}
 
-    .contact-body {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 60px 24px 80px;
-    }
+.contact-body {
+max-width: 680px;
+margin: 0 auto;
+padding: 60px 24px 80px;
+}
 
-    .contact-note {
-      background: rgba(192,57,43,0.06);
-      border-left: 3px solid var(--red);
-      padding: 16px 20px;
-      font-size: 0.85rem;
-      color: var(--text-light);
-      line-height: 1.8;
-      margin-bottom: 40px;
-      border-radius: 0 4px 4px 0;
-    }
+.contact-note {
+background: rgba(192,57,43,0.06);
+border-left: 3px solid var(--red);
+padding: 16px 20px;
+font-size: 0.85rem;
+color: var(--text-light);
+line-height: 1.8;
+margin-bottom: 40px;
+border-radius: 0 4px 4px 0;
+}
 
-    .form-group {
-      margin-bottom: 24px;
-    }
-    .form-group label {
-      display: block;
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-    .form-group label .required {
-      color: var(--red);
-      margin-left: 4px;
-      font-size: 0.78rem;
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1.5px solid #D5C5B5;
-      border-radius: 4px;
-      font-family: var(--sans);
-      font-size: 0.92rem;
-      color: var(--text);
-      background: var(--white);
-      transition: border-color 0.2s;
-      appearance: none;
-    }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: var(--red);
-    }
-    .form-group textarea {
-      min-height: 160px;
-      resize: vertical;
-      line-height: 1.7;
-    }
-    .select-wrap {
-      position: relative;
-    }
-    .select-wrap::after {
-      content: '▾';
-      position: absolute;
-      right: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-light);
-      pointer-events: none;
-    }
+.form-group {
+margin-bottom: 24px;
+}
+.form-group label {
+display: block;
+font-size: 0.88rem;
+font-weight: 700;
+color: var(--text);
+margin-bottom: 8px;
+}
+.form-group label .required {
+color: var(--red);
+margin-left: 4px;
+font-size: 0.78rem;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+width: 100%;
+padding: 12px 14px;
+border: 1.5px solid #D5C5B5;
+border-radius: 4px;
+font-family: var(--sans);
+font-size: 0.92rem;
+color: var(--text);
+background: var(--white);
+transition: border-color 0.2s;
+appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+outline: none;
+border-color: var(--red);
+}
+.form-group textarea {
+min-height: 160px;
+resize: vertical;
+line-height: 1.7;
+}
+.select-wrap {
+position: relative;
+}
+.select-wrap::after {
+content: '▾';
+position: absolute;
+right: 14px;
+top: 50%;
+transform: translateY(-50%);
+color: var(--text-light);
+pointer-events: none;
+}
 
-    .form-submit {
-      text-align: center;
-      margin-top: 32px;
-    }
-    .btn-submit {
-      display: inline-block;
-      padding: 14px 48px;
-      background: var(--red);
-      color: var(--white);
-      font-size: 1rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-family: var(--sans);
-      transition: background 0.2s;
-    }
-    .btn-submit:hover { background: var(--red-dark); }
+.form-submit {
+text-align: center;
+margin-top: 32px;
+}
+.btn-submit {
+display: inline-block;
+padding: 14px 48px;
+background: var(--red);
+color: var(--white);
+font-size: 1rem;
+font-weight: 700;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+font-family: var(--sans);
+transition: background 0.2s;
+}
+.btn-submit:hover { background: var(--red-dark); }
+.btn-submit:disabled { opacity: 0.6; cursor: default; }
 
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 40px 24px;
-    }
-    .form-success .success-icon {
-      font-size: 3rem;
-      margin-bottom: 16px;
-    }
-    .form-success h2 {
-      font-family: var(--serif);
-      font-size: 1.4rem;
-      color: var(--text);
-      margin-bottom: 12px;
-    }
-    .form-success p {
-      font-size: 0.9rem;
-      color: var(--text-light);
-      line-height: 1.8;
-    }
+.form-success {
+display: none;
+text-align: center;
+padding: 40px 24px;
+}
+.form-success .success-icon {
+font-size: 3rem;
+margin-bottom: 16px;
+}
+.form-success h2 {
+font-family: var(--serif);
+font-size: 1.4rem;
+color: var(--text);
+margin-bottom: 12px;
+}
+.form-success p {
+font-size: 0.9rem;
+color: var(--text-light);
+line-height: 1.8;
+}
 
-    .instagram-alt {
-      margin-top: 40px;
-      padding-top: 32px;
-      border-top: 1px solid var(--cream-dark);
-      text-align: center;
-    }
-    .instagram-alt p {
-      font-size: 0.85rem;
-      color: var(--text-light);
-      margin-bottom: 16px;
-    }
-    .btn-instagram {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 12px 28px;
-      border: 1.5px solid #C13584;
-      color: #C13584;
-      border-radius: 4px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: background 0.2s, color 0.2s;
-    }
-    .btn-instagram:hover { background: #C13584; color: var(--white); }
-    .btn-instagram svg { width: 18px; height: 18px; }
-  </style>
+/* スパム対策のハニーポット（人間には見えない） */
+.hp-field { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
+
+.instagram-alt {
+margin-top: 40px;
+padding-top: 32px;
+border-top: 1px solid var(--cream-dark);
+text-align: center;
+}
+.instagram-alt p {
+font-size: 0.85rem;
+color: var(--text-light);
+margin-bottom: 16px;
+}
+.btn-instagram {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+padding: 12px 28px;
+border: 1.5px solid #C13584;
+color: #C13584;
+border-radius: 4px;
+font-size: 0.9rem;
+font-weight: 600;
+transition: background 0.2s, color 0.2s;
+}
+.btn-instagram:hover { background: #C13584; color: var(--white); }
+.btn-instagram svg { width: 18px; height: 18px; }
+</style>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="index.html" class="site-logo">
-        <img src="images/kamon.png" alt="下川部獅子組 家紋" class="kamon">
-        <span class="site-name">下川部獅子組</span>
-      </a>
-      <nav class="global-nav">
-        <ul>
-          <li><a href="index.html">トップ</a></li>
-          <li><a href="about.html">下川部獅子組について</a></li>
-          <li><a href="index.html#activities">活動・奉納</a></li>
-          <li><a href="index.html#video">動画</a></li>
-          <li><a href="index.html#gallery">写真ギャラリー</a></li>
-          <li><a href="index.html#news">お知らせ</a></li>
-          <li><a href="contact.html" class="active">お問い合わせ</a></li>
-        </ul>
-      </nav>
-      <button class="hamburger" id="hamburger" aria-label="メニューを開く">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+<header class="site-header">
+<div class="header-inner">
+<a href="index.html" class="site-logo">
+<img src="images/kamon.png" alt="下川部獅子組 家紋" class="kamon">
+<span class="site-name">下川部獅子組</span>
+</a>
+<nav class="global-nav">
+<ul>
+<li><a href="index.html">トップ</a></li>
+<li><a href="about.html">下川部獅子組について</a></li>
+<li><a href="index.html#activities">活動・奉納</a></li>
+<li><a href="index.html#video">動画</a></li>
+<li><a href="index.html#gallery">写真ギャラリー</a></li>
+<li><a href="index.html#news">お知らせ</a></li>
+<li><a href="contact.html" class="active">お問い合わせ</a></li>
+</ul>
+</nav>
+<button class="hamburger" id="hamburger" aria-label="メニューを開く">
+<span></span><span></span><span></span>
+</button>
+</div>
+</header>
 
-  <div class="contact-hero">
-    <h1>お問い合わせ</h1>
-    <p>取材・出演依頼・見学など、お気軽にご連絡ください。</p>
-  </div>
+<div class="contact-hero">
+<h1>お問い合わせ</h1>
+<p>取材・出演依頼・見学など、お気軽にご連絡ください。</p>
+</div>
 
-  <div class="contact-body">
-    <div class="contact-note">
-      ご返信まで数日いただく場合がございます。お急ぎの場合は InstagramのDMをご利用ください。
-    </div>
+<div class="contact-body">
+<div class="contact-note">
+ご返信まで数日いただく場合がございます。お急ぎの場合は InstagramのDMをご利用ください。
+</div>
 
-    <!-- Formspree エンドポイント。https://formspree.io でアカウント作成後、
-         action の YOUR_FORM_ID を取得したIDに書き換えてください。 -->
-    <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-      <div class="form-group">
-        <label>お名前 <span class="required">必須</span></label>
-        <input type="text" name="name" placeholder="山田 太郎" required>
-      </div>
-      <div class="form-group">
-        <label>メールアドレス <span class="required">必須</span></label>
-        <input type="email" name="email" placeholder="example@example.com" required>
-      </div>
-      <div class="form-group">
-        <label>お問い合わせ種別 <span class="required">必須</span></label>
-        <div class="select-wrap">
-          <select name="type" required>
-            <option value="" disabled selected>選択してください</option>
-            <option value="取材依頼">取材依頼</option>
-            <option value="出演依頼">出演依頼</option>
-            <option value="見学希望">見学希望</option>
-            <option value="その他">その他</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label>メッセージ <span class="required">必須</span></label>
-        <textarea name="message" placeholder="ご用件をお書きください" required></textarea>
-      </div>
-      <div class="form-submit">
-        <button type="submit" class="btn-submit">送信する</button>
-      </div>
-    </form>
+<!-- 送信先: FormSubmit 経由で下川部獅子組のメールアドレスへ届きます。
+     ※初回のみ、届く確認メールのリンクをクリックして有効化が必要です。
+     有効化後は formsubmit.co/ajax/<専用コード> に差し替えるとアドレスを非公開にできます。 -->
+<form id="contact-form" action="https://formsubmit.co/ajax/shimokawanabeshishigumi@gmail.com" method="POST">
+<input type="hidden" name="_subject" value="【下川部獅子組】サイトからのお問い合わせ">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="false">
+<input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+<div class="form-group">
+<label>お名前 <span class="required">必須</span></label>
+<input type="text" name="name" placeholder="山田 太郎" required>
+</div>
+<div class="form-group">
+<label>メールアドレス <span class="required">必須</span></label>
+<input type="email" name="email" placeholder="example@example.com" required>
+</div>
+<div class="form-group">
+<label>お問い合わせ種別 <span class="required">必須</span></label>
+<div class="select-wrap">
+<select name="type" required>
+<option value="" disabled selected>選択してください</option>
+<option value="取材依頼">取材依頼</option>
+<option value="出演依頼">出演依頼</option>
+<option value="見学希望">見学希望</option>
+<option value="その他">その他</option>
+</select>
+</div>
+</div>
+<div class="form-group">
+<label>メッセージ <span class="required">必須</span></label>
+<textarea name="message" placeholder="ご用件をお書きください" required></textarea>
+</div>
+<div class="form-submit">
+<button type="submit" class="btn-submit">送信する</button>
+</div>
+</form>
 
-    <div class="form-success" id="form-success">
-      <div class="success-icon">✉️</div>
-      <h2>送信完了しました</h2>
-      <p>お問い合わせありがとうございます。<br>数日以内にご返信いたします。</p>
-    </div>
+<div class="form-success" id="form-success">
+<div class="success-icon">✉️</div>
+<h2>送信完了しました</h2>
+<p>お問い合わせありがとうございます。<br>数日以内にご返信いたします。</p>
+</div>
 
-    <div class="instagram-alt">
-      <p>InstagramのDMからもお問い合わせいただけます</p>
-      <a href="https://www.instagram.com/shimokawanabe/" target="_blank" rel="noopener" class="btn-instagram">
-        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
-        @shimokawanabe
-      </a>
-    </div>
-  </div>
+<div class="instagram-alt">
+<p>InstagramのDMからもお問い合わせいただけます</p>
+<a href="https://www.instagram.com/shimokawanabe/" target="_blank" rel="noopener" class="btn-instagram">
+<svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/></svg>
+@shimokawanabe
+</a>
+</div>
+</div>
 
-  <script src="js/main.js"></script>
-  <script>
-    const form = document.getElementById('contact-form');
-    const success = document.getElementById('form-success');
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' }
-      });
-      if (res.ok) {
-        form.style.display = 'none';
-        success.style.display = 'block';
-      } else {
-        alert('送信に失敗しました。時間をおいて再度お試しください。');
-      }
+<script src="js/main.js"></script>
+<script>
+const form = document.getElementById('contact-form');
+const success = document.getElementById('form-success');
+const submitBtn = form.querySelector('.btn-submit');
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  submitBtn.disabled = true;
+  submitBtn.textContent = '送信中…';
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' }
     });
-  </script>
+    if (res.ok) {
+      form.style.display = 'none';
+      success.style.display = 'block';
+      return;
+    }
+    throw new Error('failed');
+  } catch (_) {
+    alert('送信に失敗しました。時間をおいて再度お試しいただくか、InstagramのDMよりご連絡ください。');
+    submitBtn.disabled = false;
+    submitBtn.textContent = '送信する';
+  }
+});
+</script>
 </body>
 </html>
