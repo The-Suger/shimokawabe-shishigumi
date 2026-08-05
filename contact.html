@@ -218,10 +218,11 @@ transition: background 0.2s, color 0.2s;
 ご返信まで数日いただく場合がございます。お急ぎの場合は InstagramのDMをご利用ください。
 </div>
 
-<!-- 送信先: FormSubmit 経由で下川部獅子組のメールアドレスへ届きます。
-     ※初回のみ、届く確認メールのリンクをクリックして有効化が必要です。
-     有効化後は formsubmit.co/ajax/<専用コード> に差し替えるとアドレスを非公開にできます。 -->
-<form id="contact-form" action="https://formsubmit.co/ajax/shimokawanabeshishigumi@gmail.com" method="POST">
+<!-- 送信先: FormSubmit 経由で下川部獅子組のメールアドレスへ届きます（有効化済み）。
+     スパム収集ボット対策として、送信先はHTMLに直接書かず、ページ読み込み時にJSで組み立てています。
+     ※FormSubmitの専用コード（formsubmit.co/ajax/<ランダム文字列>）が分かれば、
+       下部スクリプトの ENDPOINT をそれに差し替えるとより確実です。 -->
+<form id="contact-form" method="POST">
 <input type="hidden" name="_subject" value="【下川部獅子組】サイトからのお問い合わせ">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_captcha" value="false">
@@ -276,12 +277,20 @@ const form = document.getElementById('contact-form');
 const success = document.getElementById('form-success');
 const submitBtn = form.querySelector('.btn-submit');
 
+// 送信先はHTMLに平文で書かず、ここで組み立てる（スパム収集ボット対策）
+// ※FormSubmitの専用コードが分かったら、下の1行を
+//   const ENDPOINT = 'https://formsubmit.co/ajax/専用コード';
+//   に置き換えてください。
+const ENDPOINT = 'https://formsubmit.co/ajax/'
+  + ['shimokawanabeshishigumi', ['gmail', 'com'].join('.')].join('@');
+form.action = ENDPOINT;
+
 form.addEventListener('submit', async e => {
   e.preventDefault();
   submitBtn.disabled = true;
   submitBtn.textContent = '送信中…';
   try {
-    const res = await fetch(form.action, {
+    const res = await fetch(ENDPOINT, {
       method: 'POST',
       body: new FormData(form),
       headers: { Accept: 'application/json' }
