@@ -286,12 +286,16 @@ form.addEventListener('submit', async e => {
       body: new FormData(form),
       headers: { Accept: 'application/json' }
     });
-    if (res.ok) {
+    // 送信サービスは失敗時もHTTP 200を返すことがあるため、本文の success を確認する
+    let data = {};
+    try { data = await res.json(); } catch (_) {}
+    const sent = res.ok && String(data.success) !== 'false';
+    if (sent) {
       form.style.display = 'none';
       success.style.display = 'block';
       return;
     }
-    throw new Error('failed');
+    throw new Error(data.message || 'failed');
   } catch (_) {
     alert('送信に失敗しました。時間をおいて再度お試しいただくか、InstagramのDMよりご連絡ください。');
     submitBtn.disabled = false;
