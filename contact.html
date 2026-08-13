@@ -204,6 +204,7 @@ transition: background 0.2s, color 0.2s;
 <li><a href="index.html">トップ</a></li>
 <li><a href="about.html">下川部獅子組について</a></li>
 <li><a href="index.html#activities">活動・奉納</a></li>
+<li><a href="join.html">参加・見学</a></li>
 <li><a href="index.html#video">動画</a></li>
 <li><a href="index.html#gallery">写真ギャラリー</a></li>
 <li><a href="index.html#news">お知らせ</a></li>
@@ -251,6 +252,7 @@ transition: background 0.2s, color 0.2s;
 <option value="取材依頼">取材依頼</option>
 <option value="出演依頼">出演依頼</option>
 <option value="見学希望">見学希望</option>
+<option value="参加・体験希望">参加・体験希望</option>
 <option value="その他">その他</option>
 </select>
 </div>
@@ -284,6 +286,11 @@ transition: background 0.2s, color 0.2s;
 const form = document.getElementById('contact-form');
 const success = document.getElementById('form-success');
 const submitBtn = form.querySelector('.btn-submit');
+
+const requestedType = new URLSearchParams(window.location.search).get('type');
+if (requestedType && [...form.elements.type.options].some(option => option.value === requestedType)) {
+  form.elements.type.value = requestedType;
+}
 
 // 送信先はHTMLに平文で書かず、ここで組み立てる（スパム収集ボット対策）
 // ※FormSubmitの専用コードが分かったら、下の1行を

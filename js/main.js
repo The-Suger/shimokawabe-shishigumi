@@ -41,8 +41,12 @@ const goTo = (index) => {
 
 dots.forEach((dot, i) => dot.addEventListener('click', () => { goTo(i); resetTimer(); }));
 
-let timer = setInterval(() => goTo(current + 1), 5000);
-const resetTimer = () => { clearInterval(timer); timer = setInterval(() => goTo(current + 1), 5000); };
+let timer = slides.length ? setInterval(() => goTo(current + 1), 5000) : null;
+const resetTimer = () => {
+  if (!slides.length) return;
+  clearInterval(timer);
+  timer = setInterval(() => goTo(current + 1), 5000);
+};
 
 // ギャラリーのホバーアニメーションは CSS で対応済み
 
