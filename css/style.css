@@ -122,7 +122,8 @@ ul { list-style: none; }
   margin-bottom: 32px;
 }
 
-.section-icon { font-size: 1.4rem; }
+.section-icon { width: 44px; height: 44px; display: inline-grid; place-items: center; }
+.section-icon img { width: 44px; height: 44px; display: block; object-fit: contain; }
 
 .section-title {
   font-family: var(--serif);
