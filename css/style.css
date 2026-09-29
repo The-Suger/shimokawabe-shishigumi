@@ -241,6 +241,13 @@ ul { list-style: none; }
 }
 
 /* 奉納日ボックス */
+.hero-schedule-row {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
 .honoubi-box {
   border: 1.5px solid rgba(201,168,76,0.8);
   border-radius: 4px;
@@ -249,6 +256,53 @@ ul { list-style: none; }
   backdrop-filter: blur(4px);
   display: inline-block;
   min-width: 300px;
+}
+
+.event-entry-box {
+  width: 220px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1.5px solid rgba(201,168,76,0.8);
+  border-radius: 4px;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(4px);
+  color: var(--white);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.event-entry-box:hover {
+  background: rgba(0,0,0,0.52);
+  transform: translateY(-2px);
+}
+
+.event-entry-label {
+  color: var(--gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 5px;
+}
+
+.event-entry-box strong {
+  font-family: var(--serif);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.event-entry-box > span:not(.event-entry-label) {
+  margin-top: 4px;
+  color: rgba(255,255,255,0.82);
+  font-size: 0.75rem;
+}
+
+.event-entry-box em {
+  margin-top: 10px;
+  color: var(--white);
+  font-size: 0.8rem;
+  font-style: normal;
+  font-weight: 700;
 }
 
 .honoubi-label {
@@ -578,6 +632,54 @@ ul { list-style: none; }
   margin-top: 10px;
 }
 
+/* ギャラリー下の公式ロゴ紹介 */
+.official-logo-note {
+  max-width: 1100px;
+  margin: 44px auto 0;
+  padding: 18px clamp(24px, 5vw, 64px);
+  display: flex;
+  align-items: center;
+  gap: clamp(28px, 6vw, 72px);
+  background: #fbf7ef;
+  border-top: 1px solid #e8ded0;
+  border-bottom: 1px solid #e8ded0;
+}
+
+.official-logo-note__image {
+  width: 70px;
+  height: 128px;
+  flex: 0 0 auto;
+  object-fit: cover;
+  object-position: center;
+}
+
+.official-logo-note__label {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 4px 12px;
+  color: #fff;
+  background: var(--red);
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.official-logo-note h3 {
+  margin: 0 0 8px;
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 2.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.official-logo-note p {
+  margin: 0;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  line-height: 1.9;
+}
+
 /* ===== お知らせ ===== */
 .news-section {
   padding: 64px 24px;
@@ -805,9 +907,21 @@ ul { list-style: none; }
 
 @media (max-width: 640px) {
   .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .official-logo-note {
+    margin-top: 36px;
+    padding: 18px 20px;
+    gap: 20px;
+  }
+  .official-logo-note__image {
+    width: 56px;
+    height: 102px;
+  }
+  .official-logo-note p br { display: none; }
   .footer-cols { grid-template-columns: repeat(2, 1fr); }
   .footer-bottom { flex-direction: column; align-items: center; }
   .honoubi-box { min-width: unset; width: 100%; }
+  .hero-schedule-row { width: 100%; }
+  .event-entry-box { width: 100%; }
   .quick-nav { flex-wrap: wrap; }
   .quick-nav-item { flex: 1 0 calc(33.33% - 2px); border-left: none; border-right: 1px solid var(--cream-dark); }
 
@@ -900,6 +1014,49 @@ ul { list-style: none; }
   line-height: 1.8;
 }
 
+.activities-event-notice {
+  margin: -16px 0 44px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  background: var(--red);
+  color: var(--white);
+  border-radius: 4px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.activities-event-notice:hover {
+  background: var(--red-dark);
+  transform: translateY(-2px);
+}
+
+.activities-event-notice__label {
+  display: block;
+  margin-bottom: 4px;
+  color: rgba(255,255,255,0.78);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.activities-event-notice h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  line-height: 1.5;
+}
+
+.activities-event-notice p,
+.activities-event-notice__place {
+  font-size: 0.8rem;
+  line-height: 1.8;
+}
+
+.activities-event-notice p { color: rgba(255,255,255,0.82); }
+.activities-event-notice__place { flex: 0 0 auto; text-align: right; }
+.activities-event-notice__place b { color: var(--gold); }
+
 /* 年間の流れ */
 .activities-flow {
   display: grid;
@@ -946,6 +1103,14 @@ ul { list-style: none; }
 @media (max-width: 640px) {
   .activities-section { padding: 56px 20px; }
   .honou-card-date { font-size: 1.3rem; }
+  .activities-event-notice {
+    margin-top: -8px;
+    padding: 20px;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .activities-event-notice__place { text-align: left; }
 }
 /* ============================================
    追加CSS — css/style.css の【末尾】に貼り付けてください
